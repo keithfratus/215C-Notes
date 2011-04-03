@@ -125,52 +125,167 @@ Alternatively, we may use the less clear $S$-matrix:
 			$$\hat{\mathscr{H}}=\frac{\mathbf{P}^2}{2m}+\hat{H}+V$$
 			%%%%%%%%%
 			
-			Where the first term is the kinetic energy of the particle, the non-script Hamiltonian is the internal energy of the target, and the potential is the interaction potential. To simplify the system, we shall assume that the interaction potential takes on the form
+			Where the first term is the kinetic energy of the particle, the non-script Hamiltonian is the internal energy of the target (kinetic plus potential), and the term V is the interaction potential. To simplify the system, we shall assume that the interaction potential takes on the form
 			
 			
 			$$V=\sum_{i=1}^N V(\mathbf{R}-\mathbf{R}_i)$$
 			
 			
 			\paragraph{Density Operator} It becomes useful to define a density operator for the target. It is
+			
+			
 			$$\rho(\mathbf{r})=\sum_{i=1}^N \delta^3(\mathbf{r}-\mathbf{R}_i)$$
-			where $\mathbf{r}$ is simply a c-number position coordinate. We will use the Fourier transform of this operator,
+			
+			
+			where $\mathbf{r}$ is simply a c-number position coordinate (multiplied by identity). We will use the Fourier transform of this operator,
+			
+			
 			$$\rho(\mathbf{q})=\int d^3\mathbf{r}\,e^{-i\mathbf{q}\cdot\mathbf{r}}\rho(\mathbf{r})=\sum_{i=1}^Ne^{-i\mathbf{q}\cdot\mathbf{R}_i}$$
+			
+			
 			\paragraph{Rewriting the Interaction Potential} This density operator can help us rewrite the potential into a more useful form:
-			$$V=\sum_{i=1}^N \int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})e^{i\mathbf{q}\cdot(\mathbf{R}-\mathbf{R}_i}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q}) \rho(\mathbf{q})e^{i\mathbf{q}\cdot\mathbf{R}}$$
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:pot-dens}
+			V=\sum_{i=1}^N \int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})e^{i\mathbf{q}\cdot(\mathbf{R}-\mathbf{R}_i)}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q}) \rho(\mathbf{q})e^{i\mathbf{q}\cdot\mathbf{R}}
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			which is just the definition of the Fourier Transform of the interaction potential in the first line, and then a re-expression in terms of the density operator in the second line.
+			
 			\subsubsection{Modeling Scattering}
-			\paragraph{Fermi's Golden Rule} Suppose we start with an initial state $\left|\mathbf{k};\,E_i,\alpha\right>$ where the $\alpha$ labels all states in target with the energy $E$ (may be degeneracy), and we end with a final state $\left|\mathbf{k}';\,E_f,\beta\right>$. Recall that Fermi's Golden Rule tells us
+			
+			
+			\paragraph{Fermi's Golden Rule} Suppose we start with an initial state $\left|\mathbf{k};\,E_i,\alpha\right>$, where \textbf{k} is the wavevector of the incoming particle, $E_{i}$ is the initial internal energy of the target and $\alpha$ indexes the particular state with energy $E$ (since there may be degeneracy). If we end with a final state $\left|\mathbf{k}';\,E_f,\beta\right>$, then Fermi's Golden Rule tells us
+			
+			
 			$$\Gamma_{i\to f}=\frac{2\pi}{\hbar}\left|\left<\mathbf{k}';\,E_f,\beta\right|V\left|\mathbf{k};\,E_i,\alpha\right>\right|^2\delta(E_f+\epsilon_{k'}-E_i-\epsilon_k)$$
-			The meaning of the delta function is clear. For brevity, we'll denote the matrix element as $V_{fi}$. In terms of the interaction potential, this matrix element is then
-			$$V_{fi}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})\left<\mathbf{k}';\,E_f\beta\left|\rho(\mathbf{q})e^{i\mathbf{q}\cdot \mathbf{R}}\right|\mathbf{k};\,E_i\alpha\right>$$
+			
+			
+			Where the delta function maintains energy conservation (fuck you Bill). For brevity, we'll denote the matrix element as $V_{fi}$. In terms of the interaction potential, this matrix element is then, using equation \ref{eq:pot-dens},
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:matrix}
+			V_{fi}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})\left<\mathbf{k}';\,E_f\beta\left|\rho(\mathbf{q})e^{i\mathbf{q}\cdot \mathbf{R}}\right|\mathbf{k};\,E_i\alpha\right>
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
 			We now make use of the fact that the momentum and position operators are conjugate operators:
+		
 			$$e^{ia\hat{p}/\hbar}\left|x\right>=\left|x+a\right>$$
+			
 			$$e^{iq\hat{x}}\left|k\right>=\left|k+q\right>$$
+			
 			So now we have
+			
 			$$e^{i\mathbf{q}\cdot\mathbf{R}}\left|\mathbf{k}\right>=\left|\mathbf{k}+\mathbf{q}\right>$$
-			and
-			$$\left<\mathbf{k}'\left| e^{i\mathbf{q}\cdot\mathbf{R}}\right|\mathbf{k}\right>=\left<\mathbf{k}'\right|\left.\mathbf{k}+\mathbf{q}\right>=\delta^3(\mathbf{k}'-\mathbf{k}-\mathbf{q})$$
-			Then the matrix element is 
+			
+			Now, the state ket we have written is really a direct product,
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:dir-prod}
+			\left|\mathbf{k};\,E_i,\alpha\right> = \left|\mathbf{k}\right> \otimes \left|E_i,\alpha\right>.
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			Since \textbf{R} only acts on the portion of the direct product pertaining to the incoming particle, and $\rho$(\textbf{q}) only acts on the portion of the direct product pertaining to the target, we can write,
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:inner1}
+			\left<\mathbf{k}';\,E_f,\beta\left| \rho(\mathbf{q}) e^{i\mathbf{q}\cdot\mathbf{R}}\right|\mathbf{k};\,E_i,\alpha\right> = \left<E_f,\beta\left| \rho(\mathbf{q}) \right|E_i,\alpha\right> \left<\mathbf{k}'\right|e^{i\mathbf{q}\cdot\mathbf{R}}\left.|\mathbf{k}\right>
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:inner2}
+			 = \left<E_f,\beta\left| \rho(\mathbf{q}) \right|E_i,\alpha\right>  \left<\mathbf{k}'\right|\left.\mathbf{k}+\mathbf{q}\right> = \left<E_f\beta\left| \rho(\mathbf{q}) \right|E_i\alpha\right> \delta^3(\mathbf{k}'-\mathbf{k}-\mathbf{q})
+			 \end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			Thus the matrix element can be written as, using equations \ref{eq:matrix}, \ref{eq:inner1} and \ref{eq:inner2},
+			
 			$$V_{fi}=\frac{V(\mathbf{k}'-\mathbf{k})}{(2\pi)^3}\left<E_f\, \beta\left|\rho(\mathbf{k}'-\mathbf{k})\right|E_i\,\alpha\right>$$
+			
+			
 			Now we are interested in calculating the differential cross-section, which is
+			
+			
 			$$\left(\frac{d^2\sigma}{d\epsilon\,d\Omega}\right)d\Omega\, d\epsilon\equiv \frac{\textrm{\# of scattered particles/time into solid angle }d\Omega\textrm{ and energy }\epsilon\to\epsilon+d\epsilon}{\textrm{\# of incident particles/time-area}}$$
+			
+			
 			Then using Fermi's Golden Rule,
+			
+			
 			$$\Gamma_{i\to d\Omega\,d\epsilon}=\Gamma_{i\to f}{k'}^2dk'\,d\Omega=\Gamma_{i\to f}\left(\frac{m}{\hbar^2}\right)k'\,d\epsilon\,d\Omega$$
+			
+			
 			With 
+			
+			
 			$$\epsilon=\frac{\hbar^2{k'}^2}{2m}\Rightarrow d\epsilon=\frac{\hbar^2}{m}k'\,dk'$$
+			
+			
 			The differential cross section is now
-			$$\frac{d^2\sigma}{d\Omega\,d\epsilon}=\frac{\sum_{E_f, \beta}\left(\frac{m}{\hbar^2}\right)k'\Gamma_{i\to f}}{\left(\frac{1}{2\pi}\right)^3\left(\frac{\hbar k}{m}\right)}=\left(\frac{m}{2\pi \hbar^2}\right)^2\left|V(\mathbf{k}'-\mathbf{k})\right|^2\frac{k'}{k}\sum_{E_f,\beta}\delta(E_f+\epsilon_{k'}-E_i-\epsilon_k)\left|\left<E_f\,\beta\left|\rho(\mathbf{k}'-\mathbf{k})\right|E_i\,\alpha\right>\right|^2$$
-			\paragraph{Dynamical Structure Factor} To simplify the form of the cross-section, we introduce the dynamical structure factor, defined as
-			$$S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\delta\left(\omega+\frac{E_f-E_i}{\hbar}\right)\left|\left<E_f\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>\right|^2$$
-			where the inner product is a property only of the \emph{target}. Also, recall that $\mathbf{q}$ is the momentum transfer during scattering and $\omega$ is just the energy transfer divided by $\hbar$. Rewriting the delta function,
-			$$S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\int dt\,e^{i\omega t}e^{i(E_f-E_i)t/\hbar}\left<E_i\,\alpha\left|\rho(-\mathbf{q})\right|E_f\,\beta\right>\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>$$
-			which can be further simplified by
-			$$e^{it(E_f-E_i)/\hbar}\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>=\left<E_{f}\,\beta\left|e^{i Ht/\hbar}\rho(\mathbf{q})e^{-iHt/\hbar}\right|E_i\,\alpha\right>$$
+			
+			
+			$$\frac{d^2\sigma}{d\Omega\,d\epsilon}=\frac{\sum_{E_{f}, \beta}\left(\frac{m}{\hbar^2}\right)k'\Gamma_{i\to f}}{\left(\frac{1}{2\pi}\right)^3\left(\frac{\hbar k}{m}\right)}=\left(\frac{m}{2\pi \hbar^2}\right)^2\left|V(\mathbf{k}'-\mathbf{k})\right|^2\frac{k'}{k}\sum_{E_f,\beta}\delta(E_f+\epsilon_{k'}-E_i-\epsilon_k)\left|\left<E_f\,\beta\left|\rho(\mathbf{k}'-\mathbf{k})\right|E_i\,\alpha\right>\right|^2$$
+			
+			
+			\paragraph{Dynamical Structure Factor} To simplify the form of the cross-section, we introduce the dynamical structure factor (DSF), defined as
+			
+			
+			$$S(\mathbf{q},\omega)=\sum_{E_{f},\beta}\delta\left(\omega+\frac{E_f-E_i}{\hbar}\right)\left|\left<E_f\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>\right|^2$$
+			
+			
+			where the DSF pertains only to the \emph{target}, and for now $\omega$ is just a parameter. In terms of the DSF, we can write the cross-section as
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:cross-DSF}
+			\frac{d^2\sigma}{d\Omega\,d\epsilon} = \left(\frac{m}{2\pi \hbar^2}\right)^2\left|V(\mathbf{k}'-\mathbf{k})\right|^2\frac{k'}{k}S(\mathbf{q},\epsilon_{k'}-\epsilon_{k}).
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			
+			 where we are careful to note that the term V which appears is the Fourier transform of the potential. We now want to find a way to simplify the expression for the DSF. Rewriting the delta function,
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation}
+			S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\int dt\,e^{i\omega t}e^{i(E_f-E_i)t/\hbar}\left<E_i\,\alpha\left|\rho(-\mathbf{q})\right|E_f\,\beta\right>\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			which can be further simplified by noting that, since the kets are energy eigenstates,
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation}
+			e^{it(E_f-E_i)/\hbar}\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>=\left<E_{f}\,\beta\left|e^{i Ht/\hbar}\rho(\mathbf{q})e^{-iHt/\hbar}\right|E_i\,\alpha\right>
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
 			So the dynamical structure factor is then
-			$$S(\mathbf{q},\omega)=\int \frac{dt}{2\pi}e^{i\omega t}\left<E_I\,\alpha\left|\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right|E_i\,\alpha\right>$$
-			Supposing the target is at some temperature $T$, for some operator $\hat{\theta}$,
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:double-sandwich}
+			S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\int dt\,e^{i\omega t} \left<E_i\,\alpha\left|\rho(-\mathbf{q})\right|E_f\,\beta\right> \left<E_{f}\,\beta\left|e^{i Ht/\hbar}\rho(\mathbf{q})e^{-iHt/\hbar}\right|E_i\,\alpha\right>  
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			Since we now see we have a completeness relation, we can perform the summation to get
+			
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{equation} \label{eq:DSF}
+			S(\mathbf{q},\omega)=\int \frac{dt}{2\pi}e^{i\omega t}\left<E_i\,\alpha\left|\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right|E_i\,\alpha\right>,
+			\end{equation}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			which is a particularly useful form since it involves the expectation value of some operator in the initial state of the target particle. Equations \ref{eq:cross-DSF} and \ref{eq:DSF} are the results we will most often want to use (in particular for HW1 P3!). Note that $\rho$(\textbf{q},t) is just the second operator sandwiched in equation \ref{eq:double-sandwich}, which correpsonds to the usual Heisenberg picture definition. 
+			
+			\paragraph{Thermal Targets} For a thermodynamic situation with the target at some temperature $T$, for some operator $\hat{\theta}$,
+			
 			$$\left<\hat{\theta}\right>\equiv \frac{1}{Z}\sum_{E,\alpha}e^{-\beta E}\left<E_\alpha\left|\hat{\theta}\right|E\,\alpha\right>;\qquad Z=\sum_{E\,\alpha}e^{-\beta E}$$
 			\begin{center}
-				\fbox{$\displaystyle S(\mathbf{q},\omega)=\int\frac{dt}{2\pi}e^{i\omega t}\left<\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right>$}
+				$$\displaystyle S(\mathbf{q},\omega)=\int\frac{dt}{2\pi}e^{i\omega t}\left<\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right>$$
 			\end{center}
 			\paragraph{Some Comments}
 			\begin{enumerate}
