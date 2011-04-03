@@ -138,5 +138,66 @@ Alternatively, we may use the less clear $S$-matrix:
 			$$V=\sum_{i=1}^N \int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})e^{i\mathbf{q}\cdot(\mathbf{R}-\mathbf{R}_i}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q}) \rho(\mathbf{q})e^{i\mathbf{q}\cdot\mathbf{R}}$$
 			\subsubsection{Modeling Scattering}
 			\paragraph{Fermi's Golden Rule} Suppose we start with an initial state $\left|\mathbf{k};\,E_i,\alpha\right>$ where the $\alpha$ labels all states in target with the energy $E$ (may be degeneracy), and we end with a final state $\left|\mathbf{k}';\,E_f,\beta\right>$. Recall that Fermi's Golden Rule tells us
-			$$\Gamma_{i\to f}=\frac{2\pi}{\hbar}\left|\left<\mathbf{k}';\,E_f,\beta\right|V\left|\mathbf{k};\,E_i,\alpha\right>\right|^2$$
+			$$\Gamma_{i\to f}=\frac{2\pi}{\hbar}\left|\left<\mathbf{k}';\,E_f,\beta\right|V\left|\mathbf{k};\,E_i,\alpha\right>\right|^2\delta(E_f+\epsilon_{k'}-E_i-\epsilon_k)$$
+			The meaning of the delta function is clear. For brevity, we'll denote the matrix element as $V_{fi}$. In terms of the interaction potential, this matrix element is then
+			$$V_{fi}=\int\frac{d^3\mathbf{q}}{(2\pi)^3}V(\mathbf{q})\left<\mathbf{k}';\,E_f\beta\left|\rho(\mathbf{q})e^{i\mathbf{q}\cdot \mathbf{R}}\right|\mathbf{k};\,E_i\alpha\right>$$
+			We now make use of the fact that the momentum and position operators are conjugate operators:
+			$$e^{ia\hat{p}/\hbar}\left|x\right>=\left|x+a\right>$$
+			$$e^{iq\hat{x}}\left|k\right>=\left|k+q\right>$$
+			So now we have
+			$$e^{i\mathbf{q}\cdot\mathbf{R}}\left|\mathbf{k}\right>=\left|\mathbf{k}+\mathbf{q}\right>$$
+			and
+			$$\left<\mathbf{k}'\left| e^{i\mathbf{q}\cdot\mathbf{R}}\right|\mathbf{k}\right>=\left<\mathbf{k}'\right|\left.\mathbf{k}+\mathbf{q}\right>=\delta^3(\mathbf{k}'-\mathbf{k}-\mathbf{q})$$
+			Then the matrix element is 
+			$$V_{fi}=\frac{V(\mathbf{k}'-\mathbf{k})}{(2\pi)^3}\left<E_f\, \beta\left|\rho(\mathbf{k}'-\mathbf{k})\right|E_i\,\alpha\right>$$
+			Now we are interested in calculating the differential cross-section, which is
+			$$\left(\frac{d^2\sigma}{d\epsilon\,d\Omega}\right)d\Omega\, d\epsilon\equiv \frac{\textrm{\# of scattered particles/time into solid angle }d\Omega\textrm{ and energy }\epsilon\to\epsilon+d\epsilon}{\textrm{\# of incident particles/time-area}}$$
+			Then using Fermi's Golden Rule,
+			$$\Gamma_{i\to d\Omega\,d\epsilon}=\Gamma_{i\to f}{k'}^2dk'\,d\Omega=\Gamma_{i\to f}\left(\frac{m}{\hbar^2}\right)k'\,d\epsilon\,d\Omega$$
+			With 
+			$$\epsilon=\frac{\hbar^2{k'}^2}{2m}\Rightarrow d\epsilon=\frac{\hbar^2}{m}k'\,dk'$$
+			The differential cross section is now
+			$$\frac{d^2\sigma}{d\Omega\,d\epsilon}=\frac{\sum_{E_f, \beta}\left(\frac{m}{\hbar^2}\right)k'\Gamma_{i\to f}}{\left(\frac{1}{2\pi}\right)^3\left(\frac{\hbar k}{m}\right)}=\left(\frac{m}{2\pi \hbar^2}\right)^2\left|V(\mathbf{k}'-\mathbf{k})\right|^2\frac{k'}{k}\sum_{E_f,\beta}\delta(E_f+\epsilon_{k'}-E_i-\epsilon_k)\left|\left<E_f\,\beta\left|\rho(\mathbf{k}'-\mathbf{k})\right|E_i\,\alpha\right>\right|^2$$
+			\paragraph{Dynamical Structure Factor} To simplify the form of the cross-section, we introduce the dynamical structure factor, defined as
+			$$S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\delta\left(\omega+\frac{E_f-E_i}{\hbar}\right)\left|\left<E_f\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>\right|^2$$
+			where the inner product is a property only of the \emph{target}. Also, recall that $\mathbf{q}$ is the momentum transfer during scattering and $\omega$ is just the energy transfer divided by $\hbar$. Rewriting the delta function,
+			$$S(\mathbf{q},\omega)=\sum_{E_f\,\beta}\int dt\,e^{i\omega t}e^{i(E_f-E_i)t/\hbar}\left<E_i\,\alpha\left|\rho(-\mathbf{q})\right|E_f\,\beta\right>\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>$$
+			which can be further simplified by
+			$$e^{it(E_f-E_i)/\hbar}\left<E_{f}\,\beta\left|\rho(\mathbf{q})\right|E_i\,\alpha\right>=\left<E_{f}\,\beta\left|e^{i Ht/\hbar}\rho(\mathbf{q})e^{-iHt/\hbar}\right|E_i\,\alpha\right>$$
+			So the dynamical structure factor is then
+			$$S(\mathbf{q},\omega)=\int \frac{dt}{2\pi}e^{i\omega t}\left<E_I\,\alpha\left|\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right|E_i\,\alpha\right>$$
+			Supposing the target is at some temperature $T$, for some operator $\hat{\theta}$,
+			$$\left<\hat{\theta}\right>\equiv \frac{1}{Z}\sum_{E,\alpha}e^{-\beta E}\left<E_\alpha\left|\hat{\theta}\right|E\,\alpha\right>;\qquad Z=\sum_{E\,\alpha}e^{-\beta E}$$
+			\begin{center}
+				\fbox{$\displaystyle S(\mathbf{q},\omega)=\int\frac{dt}{2\pi}e^{i\omega t}\left<\rho(-\mathbf{q},0)\rho(\mathbf{q},t)\right>$}
+			\end{center}
+			\paragraph{Some Comments}
+			\begin{enumerate}
+				\item If we don't measure the final energy (i.e. we measure the \emph{direction}),
+				$$S_{\mathrm{static}}(\mathbf{q})=\int d\omega S(\mathbf{q},\omega)=\left<\rho(-\mathbf{q})\rho(\mathbf{q})\right>=\left<\left|\sum_ie^{-\mathbf{q}\cdot\mathbf{R}_i}\right|^2\right>$$
+				\item If the target particles are very heavy (i.e. they do not move),
+				$$\rho(\mathbf{q},t)=\rho(\mathbf{q})$$
+				and
+				$$S(\mathbf{q},\omega)=S(\omega)S_{\mathrm{static}}(\mathbf{q})$$
+				\item (MISSING IMPORTANT FIGURE)\\
+				
+				\noindent For particles traveling with a path length differene, a phase difference is accumulated:
+				$$\Delta \phi_i=\frac{2\pi}{\lambda}\hat{R}_i\hat{k}-\frac{2\pi}{\lambda'}\hat{R}_i\hat{k}'=\mathbf{R}_i\cdot(\mathbf{k}-\mathbf{k}')=-\mathbf{R}_i\cdot\mathbf{q}$$
+			\end{enumerate}
+			$$\mathrm{Amp}\approx \sum_i e^{i\Delta\phi_i}\cong \sum_ie^{-i\mathbf{q}\cdot\mathbf{R}_i}=\rho(\mathbf{q})$$
+			So the scattered intensity is
+			$$S(\mathbf{q})\sim\left<\left|\mathrm{Amp}\right|\right>=\left<\rho(\mathbf{q})\rho(-\mathbf{q})\right>$$
+			\subsubsection{Scattering Examples}
+			Suppose we scatter off of a solid or liquid with length scale $a\sim$ 3\AA\  and energy scale $k_BT_{\mathrm{room}}\sim300\,\mathrm{K}$.
+			\paragraph{Light Scattering} 
+			$$\epsilon=\hbar\omega=\hbar ck=\frac{hc}{\lambda}\approx 10^4\,\mathrm{eV}\sim10^7\,\mathrm{K}$$
+			$$\Delta \epsilon\sim 300\,\mathrm{K}$$
+			This is in fact X-Ray scattering.
+			
+			
+			
+			
+			
+			
+			
 \end{document}
