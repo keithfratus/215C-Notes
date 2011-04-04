@@ -308,7 +308,100 @@ Alternatively, we may use the less clear $S$-matrix:
 			\paragraph{Light Scattering} 
 			$$\epsilon=\hbar\omega=\hbar ck=\frac{hc}{\lambda}\approx 10^4\,\mathrm{eV}\sim10^7\,\mathrm{K}$$
 			$$\Delta \epsilon\sim 300\,\mathrm{K}$$
-			This is in fact X-Ray scattering.
+			This is in fact X-Ray scattering.\\
 			
-				
+			\noindent\textit{April 4, 2011}
+			\paragraph{Electron Scattering} 
+			$$\epsilon_e=\frac{h^2}{2m\lambda^2}\approx 100\,\mathrm{eV}$$
+			[MISSING INFORMATION]
+			\paragraph {Neutrons}
+			$$\epsilon_\mathrm{N}\sim \frac{h^2}{M_\mathrm{n}\lambda^2}\approx 0.1\,\mathrm{ev}\sim 1000\,\mathrm{K}$$
+			Neutrons interact with nuclei through the strong interactions as well as electrons through their spins.
+	\section{Quantum Hall Effect}
+	\subsection{References}
+		\begin{enumerate}
+		\item \textit{The Quantum  Hall Effect} by Prange and Girvin
+		\item \textit{Perspectives in Quantum Hall Effects} by daw Sarma and Pinczuk
+		\end{enumerate}
+	\subsection{Flavors of the Quantum Hall Effect}
+	The first manifestation of the Quantum Hall Effect (QHE) was discovered in 1979. It is called the \textbf{Integer Quantum Hall Effect}, for which a Nobel prize was issued in 1985. Shortly thereafter, in 1982 the \textbf{Fractional Quantum Hall Effect}  was discovered by Bob Laughlin, Tsui, Gossard, and Storium, for which all but Gossard were awarded a Nobel prize.
+	\subsection{Basic Setup}
+	To ``make'' a QHE apparatus, one grows a Silicon MOSFET (Metal Oxide (something)-Fueled (something) Transistor) with a metallic gate over a Silicon Oxide layer. A bias voltage is placed between the metallic gate and the Silicon.\\
+%%%%%%%%%%%%
+	\begin{figure}[h]
+		\caption{USEFUL Si MOSFET DIAGRAM}
+	\end{figure}	\\
+%%%%%%%%%%%%%	
+	\noindent This creates a two-dimensional electron gas by restricting the system to one transverse mode in one of the dimensions (like the quantum wire with an additional free direction). \\
+	
+	\subsubsection{Integer Quantum Hall Effect} The resistance along the longitudinal direction is
+	$$R_{L}=\frac{V_L}{I}=\frac{V_A-V_B}{I}$$
+	and the so-called ``Hall Resistance'' is
+	$$R_H=\frac{V_A-V_C}{I}$$
+%%%%%%%%%%%%%
+	\begin{figure}[h]
+		\caption{USEFUL ``VIEW FROM TOP'' DIAGRAM}
+	\end{figure}
+%%%%%%%%%%%%%
+If a magnetic field is applied , the hall resistance grew in a stair-step fashion, with values $R_H=h/(ne^2)$ with $n$ an integer, and except for values of $B$ where $R_H$ jumped, $R_L$ was zero.
+
+	\subsubsection{Fractional Quantum Hall Effect}
+	From measuring the hall conductance, $G_H=1/R_H$, it was found that
+	$$G_H=\frac{p}{q}\left(\frac{e^2}{h}\right)$$
+	where $p$ is an integer and $q$ is an odd integer. The ratio of these two (the fraction in the conductance) is often called the \textbf{Filling Factor}, and several prevalent fractions that have been recorded are
+	$$L\equiv p/q=1/3, 2/3,1/5,2/5,3/5,4/5,\ldots$$
+
+	\subsection{Details of the Quantum Hall Efffect}
+
+	In the semiconductor, electrons are moving in a net direction across the material (we'll call that direction the $x$-direction), creating an electric field. If we Lorentz Boost to a frame at that velocity, 
+	$$\mathbf{v}=\frac{1}{c}\frac{\mathbf{E}\times\mathbf{B}}{B^2},$$
+	then the electric field is effectively reduced to zero. \\
+	
+	\noindent At this velocity, we can calculate the electric current, $\mathbf{J}$, given the number density, $n$:
+	$$\mathbf{J}=ne\mathbf{v}$$
+	We then have
+	$$J_x=\frac{ne}{cB}E_y$$
+	We define the \textbf{Resistivity Tensor} to be
+	$$\rho=\begin{pmatrix} \rho_{xx} & \rho_{xy}\\ -\rho_{xy} & \rho_{yy} \end{pmatrix}$$
+	The electric field is then given by
+	$$\mathbf{E}\equiv \rho \mathbf{J}$$
+	If the width of the material is $W$ and the length between the voltage probes is $L$, we have
+	$$J_x=I/W$$
+	and so $$E_x=\rho_{yx} J_x$$
+	So 
+	
+	$$R_H\equiv \rho_{xy}=\frac{V_y/W}{I/W}=\frac{V_y}{I}$$
+	where we also have 
+	$$R_H=\rho_{xy}=\frac{B}{nec}$$
+	And also
+	\begin{align*}
+		\rho_{xx}&=\frac{E_x}{J_x}\\
+		&=\frac{V_x/L}{I/W}\\
+		&=R_L(W/L)\\
+		&=0
+	\end{align*}	
+	\subsubsection{Impurity Scattering}
+	We assume scattering off of impurities to be elastic. We can obtain a \textbf{scattering time}, $\tau$ from Fermi's Golden Rule and a drift velocity $\mathbf{v}_d$ for the electrons. The force on the electrons is then
+	\begin{align*}
+		m\frac{d\mathbf{v}_d}{dt}&=e\mathbf{E}+\frac{e}{c}\mathbf{v}\times \mathbf{B}\\
+		&=-m\frac{\mathbf{v}}{\tau}
+	\end{align*}
+	This techniques is called \textbf{Drude Theory}. We can use this to express the components of the resistivity tensor:
+	$$\rho_{xx}=\frac{m}{ne^2\tau}$$
+	$$\rho_{xy}=\frac{1}{nec}$$
+	Note that we have non-zero $\rho_{xx}$ and no plateaus on $\rho_{xy}$. This is thus a semi-classical approach.	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
