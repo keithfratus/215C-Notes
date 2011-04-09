@@ -443,7 +443,7 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	$$R_H=\frac{B}{nec}$$
 	replacing $n$ with $n_{LL}$, we have 
 	$$R_H^{LL}=\frac{B}{n_{LL}ec}=\frac{B}{\frac{B}{\Phi_0}ec}=\frac{h}{e^2}$$
-	\subsubsection{Edge Effects}
+	\subsubsection{Edge Effects in the Integer Quantum Hall Effect}
 	Suppose we have a particle in a box in with a confining potential $V(y)$ that keeps the particle from escaping the box. Then the Hamiltonian goes to
 	$$\hat{H}\to\hat{H}+V(y)$$
 	The wavefunction is still
@@ -454,7 +454,58 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	$$V(y)=V(y_0)+V'(y_0)(y-y_0)+\cdots\approx V(y_0)$$
 	then the energy levels are shifted
 	$$E_n=\hbar\omega_c\left(n+\frac{1}{2}\right)+V(y_0)$$
-	Interestingly, these excitations on the edge states are quite similar to one-dimensional Landauer transport, and it corresponds roughly to electrons ``skipping'' along the edge.
-
-
+	Interestingly, these excitations on the edge states are quite similar to one-dimensional Landauer transport, and it corresponds roughly to electrons ``skipping'' along the edge, resulting in a right-moving current on the top and a left-moving current on the bottom.\\
+	
+	\noindent \textit{April 8, 2011}\\
+	
+	\noindent Excitations move with a group velocity $v_g=\frac{1}{\hbar}\frac{\partial E}{\partial k_x}$. Now we look at quantization. Let $\mu_S$ be the chemical potential of the source (on the left), and let $\mu_D$ be the chemical potential of the drain (on the right). They are related by
+	$$\mu_S=\mu_D+\delta\mu=\mu_D=eV_H$$
+	where $V_H$ is the hall voltage. We may now ask what the responding current will be. Let $\delta n$ be the excess density on the top edge whenever $V_H\neq 0$. Then 
+	$$I=ev_g\delta n$$
+	If the total number of excess electrons is $\delta N$, then
+	$$\delta N=\frac{\delta k_x}{2\pi/L_x}\Rightarrow \delta n=\frac{\delta N}{L_x}=\frac{\delta k_x}{2\pi}$$
+	This then gives the current as
+	$$I=\frac{e}{\hbar}\frac{\delta E}{\delta k_x}\frac{\delta k_x}{2\pi}=\frac{e^2}{h}V_{H}$$
+	And then the hall conductance and resistance is naturally
+	$$G_H=\frac{I}{V_H}=\frac{e^2}{h}\Rightarrow R_H=\frac{h}{e^2}$$
+	This is much like the result from Landauer transport theory, but with $T=1$, as is mandated by the currents present never backscattering. And so we see that the edge states are giving the quantized Hall conductance. In truth, this treatment doesn't \emph{really} explain the quantized effect we see. To do this, we must take into account impurity scattering within the semi-conductor. This becomes rather involved, so we won't be discussing it.
+	
+	\subsubsection{Fractional Quantum Hall Effect}
+	The fractional quantum hall effect is observed when one partially fills the lowest Landau level with a filling factor $\nu=N/N_{LL}$ (Recall $N$ is the number of electrons and $N_{LL}$ is the number of states at that energy). There is a massive degeneracy of many-body states since the electrons in the system can be arranged in any number of combinations of available lowest Landau level states. That is, there are $N_{LL}\ C\ N\sim e^{\alpha N}$ (``$N_{LL}$ choose $N$'') combinations.
+	\paragraph{Coulomb Interactions} Interactions between the electrons must now be taken into effect to explain the fractional quantum hall effect. The relevant Hamiltonian, including these interactions, is
+	$$\hat{\mathscr{H}}=\sum_{j=1}^N\left[\frac{\mathbf{p}_j-e\mathbf{A}(\mathbf{r}_j)}{2m}\right]^2+\sum_{i<j=1}^N\frac{e^2}{\left|\mathbf{r}_i-\mathbf{r}_j\right|}$$
+	Solving this Hamiltonian becomes quite difficult, even using computers due to the exponential growth of the Hilbert space with increasing particle number. In 1993, Bob Laughlin came up with an ingenious solution to the problem: a many-body wave function.
+	
+	\paragraph{Non-Interacting Electrons in the Radial Gauge} We have been working in the Landau gauge ($\mathbf{A}=yB\,\hat{x}$), whereas Bob Laughlin thought to use the radial gauge, where $\mathbf{A}=\frac{B}{2}\left(x\,\hat{y}-y\,\hat{x}\right)$. For non-interacting electrons in the radial gauge, we follow a similar prescription as the integer quantum hall effect:
+	$$\hat{\mathscr{H}}\phi=E\phi$$
+	The lowest Landau level is
+	$$E_0=\frac{\hbar\omega_c}{2}$$
+	and the eigenfunctions are
+	$$\phi_n(z)=z^ne^{-\left|z\right|^2/4\ell^2}$$
+	where $z=x+iy$ and $n=0,1,2,\ldots$. If we write $z=\left|z\right|e^{i\theta}$, we have $z^n=\left|z\right|^ne^{in\theta}$. Again, the magnetic length is $\ell=\Phi_0/2\pi B$. Let's look into finding the probability of measuring the electron at a position $z$:
+	$$\left|\phi_n(z)\right|^2=r^{2n}e^{-r^2/2\ell^2}$$
+	This gives a very distribution that is sharply peaked about some $r^*$.
+	$$\left|\phi_n(z)\right|^2=r^{2n}e^{-r^2/2\ell^2}=e^{2n\ln r-r^2/2\ell^2}=e^{-f(r)}$$
+	$$f'(r^*)=\frac{2n}{r^*}-\frac{r^*}{\ell^2}=0$$
+	$$r^*=\sqrt{2n\ell^2}$$
+	\paragraph{The Many-Body Wave Function} Now the many-body wave function is
+	$$\psi_{LLL}(z_1,\cdots,z_N)=\det A$$
+	where $A_{ij}=\phi_{i-1}(z_j)$. Consider $N=2$
+	$$\psi_{LLL}(z_1,z_2)=\det\begin{pmatrix}
+	1& z_1\\
+	1 & z_2\end{pmatrix}e^{-}=(z_2-z_1)e^{-}$$
+	For $N$ particles, the solution is
+	$$\psi_{LLL}(z_1,\cdots,z_N)=\prod_{i<j=1}^N(z_i-z_j)e^{-\sum_{j=1}^N\left|z_j\right|^2/4\ell^2}$$
+	This function is anti-symmetrized, as required, but not quite right. Bob Laughlin won his Nobel prize for making one small change: a 3 in the exponent of the $z_i-z_j$ term to represent the 1/3 filling factor state:
+	$$\psi_{LLL}(z_1,\cdots,z_N)=\prod_{i<j=1}^N(z_i-z_j)^me^{-\sum_{j=1}^N\left|z_j\right|^2/4\ell^2}$$
+	This must necessarily be an odd integer to keep the wave function anti-symmetrized.
+	\paragraph{Electron Density}	
+	$$\prod_{i<j=1}^N(z_i-z_j)^m\longrightarrow z_1^{m(N-1)}$$
+	This is the maximum power of $z_1$, giving it the the largest possible angular momentum.
+	$$\frac{R}{\ell}=\sqrt{2m(N-1)}$$
+	The actual density of the electrons in the disk is
+	$$n=\frac{N}{\pi R^2}=\frac{1}{2\pi\ell^2m}$$
+	This mandates the filling factor be
+	$$\nu=\frac{N}{N_{LLL}}=\frac{n\pi R^2}{(B\pi R^2)/\Phi_0}=\frac{hc}{e}\frac{n}{B}=n(2\pi\ell^2)=\frac{1}{m}$$
+	We do, indeed, observe the fractional quantum hall effect with filling factors of $1,1/3,1/5,1/7,\ldots$.
 \end{document}
