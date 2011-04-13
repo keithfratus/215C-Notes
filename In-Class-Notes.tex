@@ -507,5 +507,101 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	$$n=\frac{N}{\pi R^2}=\frac{1}{2\pi\ell^2m}$$
 	This mandates the filling factor be
 	$$\nu=\frac{N}{N_{LLL}}=\frac{n\pi R^2}{(B\pi R^2)/\Phi_0}=\frac{hc}{e}\frac{n}{B}=n(2\pi\ell^2)=\frac{1}{m}$$
-	We do, indeed, observe the fractional quantum hall effect with filling factors of $1,1/3,1/5,1/7,\ldots$.
+	We do, indeed, observe the fractional quantum hall effect with filling factors of $1,1/3,1/5,1/7,\ldots$.\\
+	
+	\noindent \textit{April 13, 2011}
+	
+	\section{Feynman Path Integrals}
+	\subsection{Suggested References}
+	\begin{enumerate}
+		\item Sakurai Chapter 2.5
+		\item Shankar Chapters 8 and 21
+		\item Feynman \& Hibbs QM \& Path Integrals
+	\end{enumerate}	
+	\subsection{Benefits of Feynman Path Integrals}
+	The Feynman Path Integral (FPI) approach to Quantum Mechanics is an alternate formulation of quantum mechanics. It is very general in that it can deal with single and many particle systems. It can also be used in the semi-classical limit and can be used to solve tunneling problems. It is also an excellent example of the idea of a functional integral.
+	\subsection{Lightning Review of Classical Mechanics}
+	There are effectively two main formulations of Classical Mechanics: the Hamiltonian and Lagrangian formulations. In quantum mechanics, these two formulations lead to the Schr\"odinger/Heisenberg pictures and FPI approach, respectively. Thus, it's worth our time to briefly look over the basics of these two formulations of classical mechanics.
+	\subsubsection{Hamilton-Jacobi Equations}
+	A particle's Hamiltonian is given by
+	$$H(p,x)=\frac{p^2}{2m}+V(x)$$
+	for some potential $V$. This gives rise to the Hamilton-Jacobi Equations:
+	\begin{eqnarray}
+	\label{HJ1}\dot{x}&=\frac{\partial H}{\partial p}=\frac{p}{m}\\
+	\label{HJ2}\dot{p}&=-\frac{\partial H}{\partial x}=-\frac{\partial V}{\partial x}
+	\end{eqnarray}
+	For an observable, $A(x,p)$ in quantum mechanics, Eqs. \eqref{HJ!} and \eqref{HJ2} give
+	\begin{align*}
+		\frac{dA}{dt}&=\frac{\partial a}{\partial x}\dot{x}+\frac{\partial A}{\partial p}\dot{p}\\
+					 &=\left\{A,H\right\}=\partial_xA\,\partial_p H-\partial_p A\,\partial_x H
+	\end{align*}
+	Where $\left\{A,H\right\}$ is the \textbf{Poisson Bracket}, as defined in the equations.
+	\subsubsection{Quantum Mechanics in Schr\"odinger and Heisenberg Pictures}
+	The coordinates $x$ and $p$ go to operators $\hat{x}$ and $\hat{p}$ in the quantum limit, and the Poisson Bracket undergoes a similar transition:
+	$$\left\{\quad,\quad\right\}\longrightarrow \frac{1}{i\hbar}\left[\quad,\quad\right]$$
+	where the canonical commutation operator for quantum mechanics is
+	$$\left[\hat{x},\hat{p}\right]=i\hbar$$
+	and for any operator $\hat{A}$, we have
+	$$i\hbar\frac{d\hat{A}}{dt}=\left[\hat{A},\hat{H}\right]$$
+	This last equation gives rise to the time evolution operator that allows us to study the behavior of an operator through time:
+	$$\hat{A}(t)=e^{i\hat{H}t/\hbar}\hat{A}e^{-i\hat{H}t/\hbar}$$
+	Using time-dependent operators as opposed to time-dependent kets is called using the \textbf{Heisenberg Picture} as opposed to the \textbf{Schr\"odinger} picture.\\
+	
+	\noindent Schr\"odinger kets get their time dependence as follows:
+	$$\left|\psi(t)\right>=e^{-i\hat{H}t/\hbar}\left|\psi(0)\right>$$
+	[MISSING A BIT ON PROPAGATORS]
+	\subsubsection{Lagrangian Classical Mechanics}
+	The Lagrangian is related to the Hamiltonian by
+	$$L(x,\dot{x})=p\dot{x}-H=\frac{1}{2}m\dot{x}^2-V(x)$$
+	where also
+	$$\partial_p L=\dot{x}-\partial_p H=0$$
+	The equation of motion is the Euler Lagrange equation:
+	\begin{equation}
+	\label{ELEOM} \frac{d}{dt}\frac{\partial L}{\partial \dot{x}}=\frac{\partial L}{\partial x}
+	\end{equation}
+	Here, the canonical momentum is given by
+	$$p=\frac{\partial L}{\partial \dot{x}}$$
+	and the generalized force is given by
+	$$\frac{d}{dt}p=-\frac{\partial V}{\partial x}$$
+	\subsubsection{Principle of Least Action}
+	We define the \textbf{action} to be a functional $S$:
+	$$S[x(t)]=\int_{t_i}^{t_f}dt\,L(x,\dot{x}).$$
+	Classical paths minimize the action. More generally, they \emph{extremize} the action. To accomplish this, we vary a path slightly and try to have it make no difference in the action. In this case, let $x(t)=x_{cl}(t)=\delta x(t)$, where $\delta x(t)$ is the deviation from the ``right'' path. We fix the end points, mandating that $\delta x(t_i)=\delta x(t_f)=0$. Then the action becomes
+	$$S[x_{cl}(t)+\delta x(t)]=S[x_{cl}(t)]+\int_{t_i}^{t_f}dt\,\left[\left(\frac{\partial L}{\partial x}\right)_{x_a} \delta x(t)+\left(\frac{\partial L}{\partial \dot{x}}\right)_{x_B}\delta \dot{x}(t)\right]+\mathcal{O}(\delta x)^2$$
+	[MISSING LAST STEP]
+	\paragraph{Example: Free Particle} For the free particle, $V=0$. \eqref{ELEOM} gives us $m\ddot{x}=0$. Then we have
+	$$X_{cl}(t)=x_i+\frac{(x_f-x_i)}{(t_f-t_i)}(t-t_i)$$
+	$$\dot{x}_{cl}(t)=\left(\frac{x_f-x_i}{t_f-t_i}\right)$$
+	Then the action is
+	$$S_{cl}=\int_{t_i}^{t_f}dt\,\frac{1}{2}m\dot{x}^2_{cl}=\frac{m}{2}\frac{(x_f-x_i)^2}{(t_f-t_i)}$$ 
+	\subsubsection{Use of the Quantum Propagator}
+	Remember that the propagator acts on a ket to give
+	$$\left|\psi(t)\right>=e^{-i\hat{H}t/\hbar}\left|\psi(0)\right>$$
+	We can write this in integral form as
+	$$\psi(x,t)=\int dx'\left<x\left|e^{-iHt/\hbar}\right|x'\right>\psi(x',0)$$
+	where we recall the identity operator is
+	$$1=\int dx'\,\left|x'\right>\left<x'\right|$$
+	and the propagator is
+	$$U(x,t;x'_0)\equiv \left<x\left|e^{-iHt/\hbar}\right|x'\right>$$
+	\paragraph{Example: Free Particle} For the free particle, we have $\hat{H}=\hat{p}^2/2m$. The propagator is then
+	$$U(x_f,t_f;x_i,t_i)=\left<x_f\left|e^{-i\hat{H}(t_f-t_i)/\hbar}\right|x_i\right>=\int_{-\infty}^\infty \frac{dp}{2\pi\hbar}e^{\frac{ip}{\hbar}(x_f-x_i)}e^{-\frac{ip^2}{2m}\frac{(t_f-t_i)}{\hbar}}=\left[\frac{m}{2\pi\hbar i(t_f-t_i)}\right]^{1/2}e^{\frac{i}{\hbar}S_{cl}}$$
+	Note that $\left<x|p\right>=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$. (Evidently we used that.)
+	\subsubsection{Imaginary Time Propagator}
+	A topic useful in quantum statistical mechanics is that of the imaginary time propagator. Suppose we have a Hamiltonian
+	$$\hat{H}=\hat{p}^2/2m+V(\hat{x})$$
+	The partition function is 
+	$$Z=\mathrm{Tr}\, e^{-\beta\hat{H}}=\int dx\,\left<x\left|e^{-\beta\hat{H}}\right|x\right>$$
+	Recall that the free energy is then $F=-k_BT\ln Z$. Then we define the imaginary time propagator to be
+	$$U_I(x,x';\tau)\equiv\left<x\left|e^{-\tau \hat{H}/\hbar}\right|x'\right>$$
+	Working with the imaginary time propagator is nice because it converges much more easily than its real counterpart and that the partition function can be written as $Z=\int_x U_I(x,x_i;\beta\hbar)$. Also, it is simply an analytic continuation of the real-time propagator. That is, $U(t\to-i\tau)=U_I(\tau)$. Finally, we are able to extract ground states from this, noting that
+	$$1=\sum_n\left|n\right>\left<n\right|\qquad \hat{H}\left|n\right>=E_n\left|n\right>$$
+	Then we have
+	$$U_I(x,x';\tau)=\sum_n \phi_n(x)\phi_n^*(x')e^{-\tau E_n/\hbar}$$
+	where we have defined $\left<x|n\right>=\phi_n(x)$. As $\tau\to \infty$,
+	$$U_I(x,x';\tau)\approx \phi_0(x)\phi_0^*(x')e^{-E_0\tau/\hbar}+\phi_1(x)\phi_1^*(x')e^{-E_1\tau/\hbar}+\cdots$$
+	
+	
+	
+	
+	
 \end{document}
