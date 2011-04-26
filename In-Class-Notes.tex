@@ -473,7 +473,7 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	\subsubsection{Fractional Quantum Hall Effect}
 	The fractional quantum hall effect is observed when one partially fills the lowest Landau level with a filling factor $\nu=N/N_{LL}$ (Recall $N$ is the number of electrons and $N_{LL}$ is the number of states at that energy). There is a massive degeneracy of many-body states since the electrons in the system can be arranged in any number of combinations of available lowest Landau level states. That is, there are $N_{LL}\ C\ N\sim e^{\alpha N}$ (``$N_{LL}$ choose $N$'') combinations.
 	\paragraph{Coulomb Interactions} Interactions between the electrons must now be taken into effect to explain the fractional quantum hall effect. The relevant Hamiltonian, including these interactions, is
-	$$\hat{\mathscr{H}}=\sum_{j=1}^N\left[\frac{\mathbf{p}_j-e\mathbf{A}(\mathbf{r}_j)}{2m}\right]^2+\sum_{i<j=1}^N\frac{e^2}{\left|\mathbf{r}_i-\mathbf{r}_j\right|}$$
+	$$\hat{\mathscr{H}}=\sum_{j=1}^N\left[\frac{\mathbf{p}_j-e\mathbf{A}(\mathbf{r}_j)/c}{2m}\right]^2+\sum_{i<j=1}^N\frac{e^2}{\left|\mathbf{r}_i-\mathbf{r}_j\right|}$$
 	Solving this Hamiltonian becomes quite difficult, even using computers due to the exponential growth of the Hilbert space with increasing particle number. In 1993, Bob Laughlin came up with an ingenious solution to the problem: a many-body wave function.
 	
 	\paragraph{Non-Interacting Electrons in the Radial Gauge} We have been working in the Landau gauge ($\mathbf{A}=yB\,\hat{x}$), whereas Bob Laughlin thought to use the radial gauge, where $\mathbf{A}=\frac{B}{2}\left(x\,\hat{y}-y\,\hat{x}\right)$. For non-interacting electrons in the radial gauge, we follow a similar prescription as the integer quantum hall effect:
@@ -599,6 +599,257 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	$$U_I(x,x';\tau)=\sum_n \phi_n(x)\phi_n^*(x')e^{-\tau E_n/\hbar}$$
 	where we have defined $\left<x|n\right>=\phi_n(x)$. As $\tau\to \infty$,
 	$$U_I(x,x';\tau)\approx \phi_0(x)\phi_0^*(x')e^{-E_0\tau/\hbar}+\phi_1(x)\phi_1^*(x')e^{-E_1\tau/\hbar}+\cdots$$
+	
+	
+	\textit{April 18, 2011}
+	\subsubsection{Brief Review of Missed Material}
+	Recall the propagator is given by
+	$$U(x_f,t_f;x_i,t_i)=\left<x_f\left|e^{-i\hat{H}(t_f-t_i)/\hbar}\right|x_i\right>=\int_{x(t_i)=x_i}^{x(t_f)=x_f}\mathcal{D}x(t)e^{iS/\hbar}$$
+	where
+	$$S=\int_{t_i}^{t_f}dt\,L(x,\dot{x})$$
+	\subsection{Aharonov-Bohm Effect}
+	The Aharonov-Bohm effect is a phenomenon that occurs with a charged particle in a magnetic field. The Lorentz force law tells us that
+	$$\mathbf{F}=e\left(\mathbf{E}+\frac{\mathbf{v}}{c}\times\mathbf{B}\right)$$
+	The equations of motion could be recovered with the Lagrangian
+	$$L=\frac{1}{2}m\dot{\mathbf{r}}^2-e\phi+\frac{e}{c}\mathbf{v}\cdot\mathbf{A}$$
+	where
+	$$\mathbf{E}=-\nabla \phi-\frac{1}{c}\partial_t\mathbf{A}$$
+	$$\mathbf{B}=\nabla\times\mathbf{A}$$	
+	The Euler-Lagrange equations tell us
+	$$\frac{\partial L}{\partial \dot{x}_i}=p_i=mv_i+\frac{e}{c}A_i$$
+	$$\frac{d}{d t}\left(\frac{\partial L}{\partial \dot{x}_i}\right)=m\frac{d}{dt}v_i+\frac{e}{c}\frac{d}{dt}A_i$$
+	Which then tells us
+	$$\frac{\partial L}{\partial x_i}=-e\frac{\partial \phi}{\partial x_i}+\frac{e}{c}\frac{\partial}{\partial x_i}(\mathbf{v}\cdot\mathbf{A}$$
+	The equation of motion is thus
+	\begin{align*}
+	m\frac{d\mathbf{v}}{dt}&=-e\nabla \phi-\frac{e}{c}\frac{d}{dt}\mathbf{A}(\mathbf{r},t)+\frac{e}{c}\mathbf{v}(\mathbf{v}\cdot\mathbf{A})\\
+	&= -e\nabla\phi-\frac{e}{c}\partial_t\mathbf{A}-\frac{e}{c}\mathbf{V}\cdot\nabla \mathbf{A}+\frac{e}{c}\nabla\left(\mathbf{v}\cdot\mathbf{A}\right)\\
+	&=e\mathbf{E}+\frac{e}{c}\mathbf{v}\times(\nabla\times\mathbf{A})\\
+	&=e\mathbf{E}=\frac{e}{c}\mathbf{v}\times\mathbf{B}
+	\end{align*}
+	as expected.\\
+	
+	\noindent Dealing only with the magnetic field, the action is given by
+	\begin{align*}
+	S&=\int_{t_i}^{t_f}dt\,\frac{1}{2}m\dot{\mathbf{r}}^2+\frac{e}{c}\int_{t_i}^{t_f}dt\,\frac{d\mathbf{r}}{dt}\cdot\mathbf{A}\\
+	&=S_0+\frac{e}{c}\int_{\mathbf{r}_i}^{\mathbf{r}_f}d\mathbf{r}\cdot\mathbf{A}
+	\end{align*}
+	where we recognize the last integral to be a line integral. It appears the action then depends on the path taken by the particle.\\
+	\begin{center}
+	[MISSING SOME EQUATIONS THAT APPEARED TO INVOLVE THE PROPAGATOR]
+	\end{center}
+	Where the magnetic field is zero, we have
+	$$\int d\mathbf{r}_1\cdot\mathbf{A}-\int d\mathbf{r}_2\cdot\mathbf{A}=\oint d\mathbf{r}\cdot\mathbf{A}=\int d^2\mathbf{A}\cdot\mathbf{B}=0$$
+	The Aharonov-Bohm effect is interesting in that it has no classical analogue. Suppose the magnetic field is contained within some hard-walled structure that the particle cannot enter, so that the particle is never, in fact, in the field. We then consider two paths from $\mathbf{r}_i$ to $\mathbf{r}_f$, which we call $\mathbf{r}_1(t)$ and $\mathbf{r}_2(t)$ (these two paths are generic, but differ from each other in the way they go around the magnetic field). Then the propagator is
+	\begin{align*}U&=\int\mathcal{D}\mathbf{r}_1(t)e^{iS_0/\hbar}e^{\frac{ie}{c}\int d\mathbf{r}_1\cdot\mathbf{A}}+\int\mathcal{D}\mathbf{r}_2(t)e^{iS_0/\hbar}e^{\frac{ie}{c}\int d\mathbf{r}_2\cdot\mathbf{A}}\\
+	&=\mathcal{A}\left[e^{\frac{ie}{c}\int d\mathbf{r}_1\cdot\mathbf{A}}+e^{\frac{ie}{c}\int d\mathbf{r}_2\cdot\mathbf{A}}\right]\\
+	&=\tilde{\mathcal{A}}\left[1+e^{\frac{i2\pi}{\phi_0}\oint d\mathbf{r}\cdot\mathbf{A}}\right]\\
+	&=\tilde{\mathcal{A}}\left[1+e^{i2\pi\phi/\phi_0}\right]
+	\end{align*}
+	where $\phi_0$ is again the quantum of flux. Then the probability of the particle moving from $\mathbf{r}_i$ to $\mathbf{r}_f$ is
+	$$P\approx \left|U\right|^2=2\left|\tilde{A}\right|^2\left[1+\cos(2\pi\phi/\phi_0)\right]$$
+	Classically speaking, the magnetic field shouldn't affect the path of the particle, and yet here, we see that the magnetic flux the circuit encompasses has a very real effect on the particle's motion at the quantum level! In fact, studies in the 1980's involving metallic rings encompassing a magnetic field showed that the conductance was indeed periodically modulated with period $\phi=\phi_0$.
+	\paragraph{Parallel in Superconductivity} In superconductors, a similar effect occurs, but the flux quantum is then given by
+	$$\phi_0^{\mathrm{SC}}=\frac{hc}{2e}$$
+	rather than the normal value of $\phi_0=hc/e$.
+	\subsection{Imaginary Time Path Integrals}
+	Recall the relation between the real propagator and the imaginary time propagator:
+	$$U=\left<x_f\left|e^{-i\hat{H}(t_f-t_i)/\hbar}\right|x_i\right>$$
+	$$U_{\mathrm{I}}=\left<x_f\left|e^{-\tau\hat{H}}\right|x_i\right>$$
+	where we have used $t\to-i\tau$ to form an analytic continuation of $U$. Then we have
+	$$U=\int\mathcal{D}xe^{\frac{i}{\hbar}\int dt\,\left[\frac{1}{x}m\dot{x}^2-V\right]}\longrightarrow \int \mathcal{D}x(\tau)e^{\frac{i}{\hbar}(-i)\int d\tau\left[-\frac{1}{2}m\left(\frac{dx}{d\tau}\right)^2-V\right]}=\int \mathcal{D}xe^{-S_E/\hbar}$$
+	where $S_E$ is the Euclidean action, defined by
+	$$S_E\equiv \int d\tau\left[\frac{1}{2}m\left(\frac{dx}{d\tau}\right)^2+V(x,\tau)\right]$$
+	Also\ldots
+	$$e^{-S_E/\hbar}\geq 0$$
+	The path integral over \emph{phase space} is given by
+	$$\int\mathcal{D}x(\tau)\mathcal{D}p(\tau)e^{-\frac{1}{\hbar}S_E(x,p)}$$
+	where 
+	$$S_E(x,p)=\int d\tau\left[ip(\tau)\frac{dx}{d\tau}+H(x,p)\right]$$
+	\subsubsection{Classical Limit of the Partition Function}
+	From this we can deduce the classical limit of the partition function:
+	\begin{align*}
+	Z(\beta)&=\int dx\, U_{\mathrm{I}}(x,x;\tau=\beta\hbar)\\
+	&=\lim_{N\to\infty}\int_{-\infty}^\infty \prod_{n=1}^N \frac{dx_n\,dp_n}{2\pi\hbar}e^{-S_E/\hbar}\\
+	&=\sum_ne^{-\beta E_n}
+	\end{align*}
+	In the classical limit, we suppose $k_B T\gg\Delta E$ and effectively, $k_BT\to\infty$, meaning $\beta\to 0$. Then we have
+	$$x(\tau)\to x$$
+	$$p(\tau)\to p$$
+	$$Z\to\int\frac{dx\,dp}{2\pi\hbar}e^{-\beta H(x,p)}=Z_{cl}$$
+	\subsubsection{Comparing Quantum and Classical Statistical Mechanics}
+	Recall that the quantum partition function is
+	$$\int dx_1\ldots dx_N\,e^{-\frac{1}{\hbar}S_{E}}$$
+	with
+	$$S_E=\sum_{n=1}^N\left[\frac{m}{2}\left(x_{n+1}-x_n\right)^2+\epsilon V(x_n)\right]$$
+	\begin{center}
+	\begin{figure}[h]
+	\centering
+	\begin{tabular}{c|c}
+	Quantum Path Integral & Classical Stat. Mech. System\\
+	\hline
+	$S_E$ & $E\left[\left\{x_n\right\}\right]$\\
+	$\hbar$ & $k_BT$\\
+	$x(\tau)$ & $\left\{x_n\right\}$\\
+	$\beta\hbar$ & $L=$\# of particles\\
+	0-dimensions & 1 dimension\\
+	$d$-dimensions & $d+1$-dimensions
+	\end{tabular}
+	\caption{Relations between Quantum and Classical Statistics}
+	\end{figure}
+	\end{center}
+	\textit{April 20, 2011}
+	\subsection{Further Examples of Path Integrals}
+	\subsubsection{Tunneling of Particles in a Double-Well Potential}
+	Consider a particle bound in a double welled potential (think $V(x)=x^4-x^2+1$ or similar). Classically, i.e., with $\hbar=0$, we would expect the particle to be stuck in one of the wells with low enough energies, inducing symmetry breaking. However, if $\hbar$ is small, or just \emph{close} to zero, the quantum system could exude tunneling.\\
+	
+	\noindent For simplicity, we shall truncate our treatment to two states:
+	$$\left|a\right>=\begin{pmatrix}1\\0\end{pmatrix}$$
+	$$\left|-a\right>=\begin{pmatrix}0\\1\end{pmatrix}$$
+	We can guess what the Hamiltonian will be:
+	$$\mathcal{H}=\begin{pmatrix}E_0&0\\0&E_0\end{pmatrix}$$
+	where we we will now say $E_0\equiv 0$.  This form does not permit any tunneling and only allows the two ground states of the two wells. We can introduce a coupling portion to the Hamiltonian by inserting some factor $\Delta$ which corresponds to the tunneling rate. Then the Hamiltonian becomes
+	$$\mathcal{H}=-\Delta\sigma^x=-\begin{pmatrix}0&\Delta\\\Delta&0\end{pmatrix}$$
+	Now there are two energies,
+	$$E_{\pm}=\mp\Delta$$
+	and two new eigenstates,
+	$$\left|\psi_{\pm}\right>=\frac{1}{\sqrt{2}}\left(\left|a\right>\pm\left|-a\right>\right)$$
+	Suppose at $t=0$, the particle is in the right well. Then we have
+	$$\left|a\right>=\frac{1}{\sqrt{2}}\left[\left|\psi_+\right>+\left|\psi_-\right>\right]$$
+	Introducing the time evolution operator, we obtain the dynamics of the system
+	$$e^{-iHt/\hbar}\left|a\right>=\left|a(t)\right>=\frac{1}{\sqrt{2}}\left[e^{-iE_+t/\hbar}\left|\psi_+\right>+e^{-iE_-t/\hbar}\left|\psi_-\right>\right]$$
+	This simplifies to
+	$$\left|a(t)\right>=\cos\left(\frac{\Delta t}{\hbar}\right)\left|a\right>+i\sin\left(\frac{\Delta t}{\hbar}\right)\left|-a\right>$$
+	Now we revisit the concept of imaginary time. The partition function for the two-level system is [MISSING]. The probability for tunneling to the $+$ state is
+	$$P_+(t)=\left|\left<a|a(t)\right>\right|^2=\cos^2\left(\frac{\Delta}{\hbar}\right)$$
+	In the classical limit ($\hbar\to0^+$), the classical paths between the wells in real time would be determined by
+	$$m\ddot{x}=-\frac{\partial V}{\partial x}$$
+	There are then no classical paths that start at rest in $\left|-a\right>$ and end at rest in $\left|a\right>$. In imaginary time,t he path integral partition function is given by
+	$$Z=\int\mathcal{D}x(\tau)e^{-\frac{1}{\hbar}\int_0^\beta d\tau\left[\frac{1}{2}m\dot{x}^2+V(x)\right]}$$
+	The change in sign on $V(x)$ allows a more thorough investigation of the situation. The propagator is then
+	$$U=\left<x\left|e^{-iHt}\right|x'\right>=\int\mathcal{D}x(t)e^{\frac{i}{\hbar}\int dt\,\left[\frac{1}{2}m\dot{x}^2-V\right]}=\int\mathcal{D}xe^{-\frac{1}{\hbar}S_E}$$
+	We wish to find a solution $x(\tau)$ which minimizes $S_E$:
+	$$m\frac{d^2x}{d\tau^2}=+\frac{\partial V}{\partial x}$$
+	where
+	$$\left(\frac{\delta S_e}{\delta x}\right)=0$$
+	Now to calculate the Euclidean Action for a tunneling path, we note that 
+	$$m\ddot{x}\dot{x}=\frac{\partial V}{\partial x}\dot{x}$$
+	$$\frac{d}{d\tau}\left(\frac{m}{2}\dot{x}^2\right)=\frac{dV(x(\tau))}{d\tau}$$
+	$$\frac{m}{2}\dot{x}^2-V(x)=0$$
+	thus yielding
+	$$S_E=\int d\tau\,\left[\frac{1}{2}m\dot{x}^2+V(x)\right]=\int d\tau\ m\frac{dx}{d\tau}\frac{dx}{d\tau}=\int_{-a}^a\,dx\ m\dot{x}=\int_{-a}^adx\,\sqrt{2mV(x)}$$
+	\begin{center}
+		\fbox{$\displaystyle S_E=\int_{-a}^adx\,\sqrt{2mV(x)}$}
+
+	\end{center}
+	With this in hand, we find
+	$$e^{-\frac{1}{\hbar}S_E}=e^{-\frac{}{\hbar}\int_{-a}^adx\,\sqrt{2mV(x)}}$$
+	Now recall from earlier that the partition function was found to be
+	$$Z=2\cosh(\beta\Delta)$$
+	We can calculuate the partition funtion using the path integral approach:
+	$$Z=\mathrm{Tr}\,e^{-\beta H}\approx\left<a\left|e^{-\beta H}\right|z\right>+\left<-a\left|e^{-\beta H}\right|-a\right>$$
+	Since those two states are the most likely filled states, this is a decent approximate trace. Evaluating the first inner product,
+	$$\left<a\left|e^{-\beta H}\right|a\right>=\int_{x(0)=a}^{x(\beta\hbar)=a} \mathcal{D}x(\tau)e^{-\frac{1}{\hbar}S_E}$$
+	\paragraph{Instanton Gas Approximation} We will sum only over paths that involve \textbf{instanton} pathways. An instanton is a localization of a field, in this case, the localized concept of the field $x(\tau)$ that minimizes the Euclidean action. Another example of instantons would be a vortex in a 2d situation, perhaps where the spin of a magnet undergoes a rotation of $2\pi$ whenever it goes around. 
+	\begin{equation}\label{instantonGas}Z\longrightarrow Z_{\mathrm{instanton}\ \mathrm{gas}}=1+\int_{\tau_1<\tau_2}^{\beta\hbar}d\tau_1\,d\tau_2\,\left[A_0e^{-\frac{1}{\hbar}S_E^{cl}}\right]^2+\int_{\tau_1<\tau_2<\tau_3<\tau_4}^{\beta\hbar} d\tau_1\,d\tau_2\,d\tau_3\,d\tau_4\,\left[A_0e^{-\frac{1}{\hbar}S_E^{cl}}\right]^4+\cdots\end{equation}
+	where the first term represents the path where there are no instantons, the second where there is two instantons and the third where there are 4 instantons, etc., and
+	$$S_{E}^{cl}=\int_{-a}^a dx\,\sqrt{2mV(x)}$$
+	The prefactor, $A_0$ is due to fluctuations around instantons. This can be evaluated as
+	\begin{align*}
+	Z_{\mathrm{instanton}\ \mathrm{gas}}&=1+\frac{1}{2!}(\beta\hbar)^2\left(A_0e^{-\frac{1}{\hbar}S_E^{cl}}\right)^2+\frac{1}{4!}(\beta\hbar)^4\left(A_0e^{-\frac{1}{\hbar}S_E^{cl}}\right)^4+\cdots\\
+	&=\sum_{n=0}^\infty \frac{\left[\beta\hbar A_0e^{-\frac{1}{\hbar}S_E^{cl}}\right]^{2n}}{2n!}=e^{\beta\hbar\Delta}+e^{-\beta\hbar\Delta}\\
+	&=2\cosh(\beta\hbar\Delta)
+	\end{align*}
+	and so
+	\begin{center}
+		\fbox{$\displaystyle \Delta=\hbar A_0e^{-S_E^{cl}/\hbar}$}
+	\end{center}
+	\subsubsection{Decay of a Particle in a Quasi-Stable Potential}
+	
+	Now consider a potential with the shape like $V(x)=x-x^3$ or $V(x)=x^3-x$. Again we'll have $m\ddot{x}=\partial V/\partial x$.\\
+	
+	[MISSING NOTES FROM FRIDAY, APRIL 22, 2011]\\
+	
+	\textit{April 25, 2011}\\
+	
+	\section{Quantum Ising Model}
+	For the Quantum Ising Model, we work with the Hamiltonian
+	\begin{equation} \label{quantumIsing} \hat{\mathcal{H}}=-J\sum_{\left<ij\right>}\hat{\sigma}_i^z\hat{\sigma}_j^z-h\sum_i\hat{\sigma}_i^x\end{equation}
+	Where the spin operators obey the commutation relation
+	\begin{equation} \label{spinComm} \left[\hat{\sigma}_i^\alpha,\hat{\sigma}_j^\beta\right]=2i\delta_{ij}\epsilon_{\alpha\beta\gamma}\hat{\sigma}_i^\gamma \end{equation}
+	Some useful symmetries in this system are
+	\begin{align*}
+		\hat{\sigma}_i^z&\longrightarrow -\hat{\sigma}_i^z\\
+		\hat{\sigma}_i^x&\longrightarrow \hat{\sigma}_i^x\\
+		\hat{\sigma}_i^y&\longrightarrow -\hat{\sigma}_i^y
+	\end{align*}	
+	This transformation formed by the \textbf{Unitary Transformation}, given by
+	$$\hat{U}=\prod_i e^{\frac{i\pi}{2}\hat{\sigma}_i^x}=\prod_i i\hat{\sigma}_i^x=\prod_i \hat{\sigma}_i^x$$
+	and
+	$$\hat{U}^\dag=\hat{U}^{-1}=\hat{U}\Rightarrow \hat{U}^2=1$$
+	Thus the eigenvalues of $\hat{U}$ are $\pm 1$. Note then that
+	$$\hat{U}^\dag \hat{\sigma}^z_i\hat{U}=-\hat{\sigma}_i^z$$
+	Also,
+	\begin{align*}
+		\hat{\mathcal{H}}\longrightarrow \hat{U}^\dag \hat{\mathcal{H}}\hat{U}&=\hat{\mathcal{H}}\\
+		\hat{U}^{-1}\hat{\mathcal{H}}\hat{U}&=\hat{\mathcal{H}}\\
+		\hat{\mathcal{H}}\hat{U}&=\hat{U}\hat{\mathcal{H}}\\
+		 \left[\hat{\mathcal{H}},\hat{U}\right]&=0
+	\end{align*}
+	[MISSING SOME BUSINESS ON ENERGY EIGENVALUES. THIS MAN ERASES LIKE A BOSS]\\
+	
+	\subsection{Simplifying Limits}
+	In order to simplify the problem, we assume some limits
+	\subsubsection{Small $J$}
+	$$h\gg J\rightarrow 0^+$$
+	which gives the relevant Hamiltonian
+	$$\hat{\mathcal{H}}_h=-h\sum_i\hat{\sigma}_i^x$$
+	The ground state is then obviously the one which has all particles' spins aligned in the $+x$ direction
+	$$\left|G\right>_0=\prod_i\left|\rightarrow\right>_i=\prod_i\frac{1}{\sqrt{2}}\left[\left|\uparrow\right>_i+\left|\downarrow\right>_i\right]$$
+	Which implies the spin eigenvalues
+	$$\hat{\sigma}^x\left|\rightarrow\right>=+\left|\rightarrow\right>$$
+	and
+	$$\hat{\sigma}^x\left|\leftarrow\right>=-\left|\leftarrow\right>$$
+	The unitary transformation operator gives 
+	$$\hat{U}\left|G\right>_0=+\left|G\right>_0$$
+	since
+	$$\hat{U}=\prod_i\hat{\sigma}_i^x$$
+	Since $\hat{\sigma}^z\left|\rightarrow\right>=\left|\leftarrow\right>$, the $\hat{\sigma}^z$'s are uncorrelated. The correlation function is given by
+	$$G(\mathbf{x}_i-\mathbf{x}_j)\equiv {_0\left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>_0}=\delta_{ij}$$
+	If we switch on $J$ to a perturbatively small value, invoking first-order perturbation theory, we get
+	$$\left|G\right>=\left|G\right>_0+\sum_n\frac{\left|n\right>\left<n\right|\hat{\mathcal{H}}\left|G\right>_0}{E_G^0-E_n}$$
+	$$(\hat{\sigma}_i^z\hat{\sigma}_j^z\left|G\right>_0=\left|\rightarrow\rightarrow\leftarrow\leftarrow\rightarrow\rightarrow\cdots\right>\equiv\left|m\right>$$
+	So the ground state is now
+	$$\left|G\right>=\left|G_0\right>+J\sum_{\left<ij\right>}\frac{\left|m\right>_{ij}}{4h}+\mathcal{O}(J^2)$$
+	where we are saying that the two ``left'' spins are spins $i$ and $j$, so the energy changes is just the energy required to flip two spins.
+	So,
+	$$\left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>=\frac{J}{4h}\left[{_0\left<G|m\right>_{ij}}+hc\right]=\frac{J}{2h}+\mathcal{O}\left(\frac{J}{h}\right)^2$$
+	where $i$ and $j$ are nearest neighbors.
+	$$\left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>\sim\left(\frac{J}{h}\right)^{\left|\mathbf{x}_i-\mathbf{x}_j\right|}\sim e^{-\left|\mathbf{x}_i-\mathbf{x}_j\right|/\xi}$$
+	where $\xi\sim\frac{1}{\ln(h/J)}$
+	\subsubsection{Small $h$}
+	Suppose $J\gg h\to0^+$, so the relevant part of the Hamiltonian is
+	$$\hat{\mathcal{H}}_J=-J\sum_{\left<ij\right>}\hat{\sigma_i^z}\hat{\sigma}_j^z$$
+	The ground states are ferromagnetic states:
+	$$\left|\uparrow\right>=\prod_i\left|\uparrow\right>_i$$
+	$$\left|\downarrow\right>=\prod_i\left|\downarrow\right>_i$$
+	Then the unitary transformation operator acts on these ground states in the following way:
+	$$\hat{U}\left|\uparrow\right>=\left|\downarrow\right>$$
+	$$\hat{U}\left|\downarrow\right>=\left|\uparrow\right>$$
+	Defining the kets
+	$$\left|\pm\right>=\frac{1}{\sqrt{2}}\left(\left|\uparrow\right>\pm\left|\downarrow\right>\right)$$
+	we have
+	$$\hat{U}\left|\pm\right>=\pm\left|\pm\right>$$
+	Evidently these kets are the eigenkets of $\hat{U}$. Note, though, that
+	$$\left<\uparrow\left|\prod_{i=1}^n\left(\hat{\sigma}_i^x\right)\right|\downarrow\right>=0$$
+	where $n<N=\#\ \textrm{of sites}$ and $N$ is very large. This gives rise to \textbf{spontaneous symmetry breaking}, since the ground state spontaneously breaks the symmetry of $\hat{\mathcal{H}}$. The correlation function is given by
+	$$\left<\uparrow\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|\uparrow\right>=1$$
+	For $h\neq 0$, we expect
+	$$_{h\neq 0}\left<\uparrow\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|\uparrow\right>_{h\neq 0}=M^2<1$$
+	where $M$ is the magnetization. Then somehow
+	$$_{h\neq 0}\left<\uparrow\left|\hat{\sigma}_i^z\right|\uparrow\right>_{h\neq 0}\equiv M\neq 0$$
+	\subsubsection{Phase Diagram}
+	For $h/J\ll 1$, we have ferromagnetism $(M\neq 0)$. For $h/J\gg 1$, we have paramagnetism $(M=0$ and $G(\mathbf{x}_i,\mathbf{x}_j)\sim e^{-\left|\mathbf{x}_i-\mathbf{x}_j\right|/\xi}$. Between these two possibilities must lie at least one phase transition. Assume a continuous phase transition
 	
 	
 	
