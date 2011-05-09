@@ -1,6 +1,11 @@
 \documentclass{article}
 \usepackage{amsmath,amsthm,mathrsfs,amssymb,graphicx,hyperref,url}
 \usepackage{geometry}
+\newcommand{\me}[3]{\left<#1\left|#2\right|#3\right>}
+\newcommand{\ket}[1]{\left|#1\right>}
+\newcommand{\bra}[1]{\left<#1\right|}
+\newcommand{\ip}[2]{\left.\left<#1\right|#2\right>}
+\newcommand{\norm}[1]{\left|#1\right|}
 \title{PHYS 215C In-Class Notes}
 \author{Bill Wolf, Keith Fratus}
 \date{Spring 2011}
@@ -796,7 +801,7 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 		\hat{\mathcal{H}}\hat{U}&=\hat{U}\hat{\mathcal{H}}\\
 		 \left[\hat{\mathcal{H}},\hat{U}\right]&=0
 	\end{align*}
-	[MISSING SOME BUSINESS ON ENERGY EIGENVALUES. THIS MAN ERASES LIKE A BOSS]\\
+	[MISSING SOME BUSINESS ON ENERGY EIGENVALUES.]\\
 	
 	\subsection{Simplifying Limits}
 	In order to simplify the problem, we assume some limits
@@ -815,7 +820,7 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	since
 	$$\hat{U}=\prod_i\hat{\sigma}_i^x$$
 	Since $\hat{\sigma}^z\left|\rightarrow\right>=\left|\leftarrow\right>$, the $\hat{\sigma}^z$'s are uncorrelated. The correlation function is given by
-	$$G(\mathbf{x}_i-\mathbf{x}_j)\equiv {_0\left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>_0}=\delta_{ij}$$
+	$$\mathcal{C}(\mathbf{x}_i-\mathbf{x}_j)\equiv {_0\left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>_0}=\delta_{ij}$$
 	If we switch on $J$ to a perturbatively small value, invoking first-order perturbation theory, we get
 	$$\left|G\right>=\left|G\right>_0+\sum_n\frac{\left|n\right>\left<n\right|\hat{\mathcal{H}}\left|G\right>_0}{E_G^0-E_n}$$
 	$$(\hat{\sigma}_i^z\hat{\sigma}_j^z\left|G\right>_0=\left|\rightarrow\rightarrow\leftarrow\leftarrow\rightarrow\rightarrow\cdots\right>\equiv\left|m\right>$$
@@ -849,10 +854,148 @@ If a magnetic field is applied , the hall resistance grew in a stair-step fashio
 	where $M$ is the magnetization. Then somehow
 	$$_{h\neq 0}\left<\uparrow\left|\hat{\sigma}_i^z\right|\uparrow\right>_{h\neq 0}\equiv M\neq 0$$
 	\subsubsection{Phase Diagram}
-	For $h/J\ll 1$, we have ferromagnetism $(M\neq 0)$. For $h/J\gg 1$, we have paramagnetism $(M=0$ and $G(\mathbf{x}_i,\mathbf{x}_j)\sim e^{-\left|\mathbf{x}_i-\mathbf{x}_j\right|/\xi}$. Between these two possibilities must lie at least one phase transition. Assume a continuous phase transition
+	For $h/J\ll 1$, we have ferromagnetism $(M\neq 0)$. For $h/J\gg 1$, we have paramagnetism ($M=0$ and $G(\mathbf{x}_i,\mathbf{x}_j)\sim e^{-\left|\mathbf{x}_i-\mathbf{x}_j\right|/\xi}$). Between these two possibilities must lie at least one phase transition. We assume a continuous phase transition
 	
+	\begin{center}
+	[DIAGRAM OF PHASE TRANSITION WOULD BE NICE HERE]
+	\end{center}
+	\textit{April 27, 2011}\\
 	
+	\noindent We define a \textbf{connected correlation function} as
+	$$\mathcal{C}_{\mathrm{conn}}(\mathbf{x}_i-\mathbf{x}_j)\equiv \left<G\left|\hat{\sigma}_i^z\hat{\sigma}_j^z\right|G\right>-\left<G\left|\hat{\sigma}_i^z\right|G\right>\left<G\left|\hat{\sigma}_j^z\right|G\right>$$
+	For paramagnetism, we find that $\mathcal{C}_{\mathrm{conn}}(\mathbf{x}_i-\mathbf{x}_j)\sim \exp(-\left|\mathbf{x}_i-\mathbf{x}_j\right|/\xi_{\mathrm{h/z}})$, whereas in ferromagnetism, we find that $\mathcal{C}_{\mathrm{conn}}(\mathbf{x}_i-\mathbf{x}_j)\sim\exp(-\left|\mathbf{x}_i-\mathbf{x}_j\right|)$
+	$$\xi\sim\left|\frac{1}{\frac{h}{j}-\left(\frac{h}{J}\right)_c}\right|^\nu$$
+	where the critical point, $(h/J)_c$ defines the critical point where a phase transition occurs.
+	\begin{center}
+	[ANOTHER FIGURE WOULD BE NICE HERE]
+	\end{center}
+	\subsection{Particle Excitations} We begin in the $J=0$ ground state:
+	$$\left|G\right>_0=\prod_i\left|\rightarrow\right>_i$$
+	The first excited state is very degenerate and can be thought of the state where one (and only one) of the spins is flipped, perhaps the $i^{\mathrm{th}}$ spin. This gives
+	$$\hat{\mathcal{H}}_h\left|i\right>=2h\left|i\right>$$
+	Now we perturb in J. As it turns out, we will need to use second order degenerate perturbation theory. First, let's give first-order perturbation theory a try:
+	\subsubsection{First Order Degenerate Perturbation Theory}
+	We wish to diagonalize the perturbing Hamiltonian $\hat{\mathcal{H}}_J$ in the degenerate subspace:
+	$$\left<j\left|\hat{\mathcal{H}}\right|j'\right>=
+	\begin{cases}
+	-J & \mathrm{if}\ j\ \mathrm{and}\ j'\ \textrm{are nearest neighbors}\\
+	0 & \textrm{otherwise}
+	\end{cases}$$	
+	We define a projection operator,
+	$$\hat{P}=\sum_{j\in\mathcal{D}} \left|j\right>\left<j\right|$$
+	where the sum is over states in the degenerate subspace. We can then define a transformed Hamiltonian as
+	\begin{align*}
+		\hat{\mathcal{H}}'&=\hat{P}\hat{\mathcal{H}}\hat{P}=\sum_{i,j}\left|i\right>\left<i\left|\hat{\mathcal{H}}_J\right|j\right>\left<j\right|\\
+		&=-J\sum_{\left<ij\right>}\left(\left|i\right>\left<j\right|+\left|j\right>\left<i\right|\right)
+	\end{align*}
+	Let's look at the momentum space and diagonalize it:
+	$$\left|\mathbf{k}\right>\equiv\frac{1}{\sqrt{N}}\sum_ie^{i\mathbf{k}\cdot\mathbf{x}_i}\left|i\right>$$
+	where $\mathbf{k}=(k_x,k_y)$, $\hbar=1$, and $N=\# of sites$. Employing a periodic boundary condition, we define
+	$$\left<\mathbf{x}_i=0|\mathbf{k}\right>=\left<\mathbf{x}_i=L|\mathbf{k}\right>$$
+	so $1=e^{ik_xL}$ and $k_x=2\pi/L\ \mathbb{Z}$. Then 
+	$$\left|\mathbf{k}+\frac{2\pi}{a}\right>=\frac{1}{\sqrt{N}}\sum_i e^{\frac{i2\pi}{x_i}}\left|i\right>=\left|\mathbf{k}\right>$$
+	An interesting proposition:
+	$$\hat{H}'_J\left|\mathbf{k}\right>=-2J\left[\cos(kx)+\cos(ky)\right]$$
+	Back to the perturbation theory, 
+	$$(\hat{\mathcal{H}}_h+\hat{\mathcal{H}}_J')\left|\mathbf{k}\right>=\epsilon_k\left|\mathbf{k}\right>$$
+	where
+	$$\epsilon_{\mathbf{k}}=2h-2J(\cos k_x+\cos k_y)+\mathcal{O}(J^2/k_y)$$
+	\begin{center}
+	[FIGURE OF $\epsilon_{k_x}$ PLOTTED AGAINST $\epsilon_{k_y}$]
+	\end{center}
+		If we expand for $\left|\mathbf{k}\right|\ll 1$, we bet
+		\begin{align*}
+			\epsilon_{\mathrm{k}}&=(2h-2dJ)+J\mathbf{k}^2+\mathcal{O}(k^4J,J^2/h)\\
+			\epsilon^2_{\mathbf{k}}&=m^2+v^2\mathbf{k}^2\\
+			m&=2h-2dJ\\
+			v&=\sqrt{4hJ}\neq 0 \textrm{ for } J\neq 0.
+		\end{align*}
+	\subsubsection{Particle Creation and Annihilation Operators}
+	We can define particle creation and annihilation opearators:
+	$$\hat{\phi}_{\mathbf{k}}\equiv \frac{1}{\sqrt{N}}\sum_i\hat{\sigma}_i^ze^{i\mathbf{k}\cdot\mathbf{x}_i}$$
+	$$\hat{\phi}_\mathbf{k}\left|G\right>_0=\left|\mathbf{k}\right>$$
+	\textit{April 29, 2011}\\
 	
-	
+	\begin{center} MISSING PUNCHLINE TO FIRST-ORDER DEGENERATE PERTURBATION THEORY FAILING \end{center}
+	\subsubsection{Second Order Degenerate Perturbation Theory}
+	With $\me{i}{\hat{\mathcal{H}}}{j}=0$, we need to diagonalize an effective Hamiltonian:
+	\begin{equation} \label{effHam} H_{ij}^{\mathrm{eff}}=\sum_n \frac{\me{i}{\hat{\mathcal{H}}_h}{n}\me{n}{\hat{\mathcal{H}}_h}{j}}{\epsilon_0-E_n} \end{equation}
+	where $\epsilon_0=4dJ$ is the energy of $\ket{i}$ and $\ket{j}$ and $\ket{n}$ labels a complete orthonormal set of states which are eigenstates of $\hat{\mathcal{H}}_J$. Now we calculate $H_{ij}^{\mathrm{eff}}$ for $i\neq j$ and $i\neq \mathrm{n.n.\ of\ }j$.
+	$$H_{ij}^{\mathrm{eff}}=\frac{h^2}{4dJ-0}+\frac{h^2}{4dJ-8dJ}=0$$
+	In general we have
+	$$H_{ij}^{\mathrm{eff}}=\begin{cases} -\frac{Nh^2}{4dJ}-C_0(d)\frac{h^2}{J} & i=j\\
+	-C_1(d)\frac{h^2}{J} & i\ \mathrm{and}\ j\ \mathrm{are\ n.n}\\
+	0 &\mathrm{otherwise} \end{cases}$$
+	Let's observe the second order shift in the ground state:
+	$$\Delta E=\sum_n\frac{\me{n}{\hat{\mathcal{H}}_h}{FM}}{0-E_n}=-\frac{Nh^2}{4dJ}$$
+	to be clearer, we let
+	$$H_{ij}^{\mathrm{eff}}\Rightarrow {\tilde{H}_{ij}}^{\mathrm{eff}}=H_{ij}^{\mathrm{eff}}-\Delta_{ij}'E_g$$
+	\subsubsection{Full Effective Hamiltonian} The full effective Hamiltonian including the zeroth order energy cost of slipping spin:
+	$$\hat{H}=\sum_i \ket{i}\mp{i}{\mathcal{H}_J}{i}+ \sum_j\ket{i}\hat{H_{if}^{\mathrm{eff}}}$$
+	$$\ket{\mathbf{k}}\equiv \frac{1}{N}\sum_i e^{i\mathbf{k}\cdot\mathbf{x}_i}\ket{i}$$
+	$$\hat{H}\ket{\mathbf{k}}=\epsilon_k\ket{\mathbf{k}}$$
+	where the \textbf{spin-wave energy} is
+	$$\epsilon_{\mathbf{k}}=4dJ\left[1-\frac{C_0}{4d}\left(\frac{h}{J}\right)^2\right]-\frac{2C_2 h^2}{J}(\cos kx+\cos ky)$$	
+	\begin{center} [MISSING SOME ON PHASE TRANSITIONS AND OTHER BUSINESS]\end{center}
+	\subsubsection*{Single Domain Wall}
+	$\ket{n}$ a domain wall to the right of site $n$. The energy of the domain wall where $h=0$ is given by
+	$$\hat{\mathcal{H}}\ket{n}=2J\ket{n}$$
+	First order degenerate perturbation theory gives
+	$$H_{n\,n'}^{\mathrm{eff}}=\me{n}{{\hat{\mathcal{H}}}_h}{n'}$$
+	$$\me{n}{\hat{\mathcal{H}}_h}{n'}=\begin{cases} 0 & n \mathrm{and}\ m'\neq $n,m$\\
+	-h &\mathrm{if\ }n\ \mathrm{and} n]\ \mathrm{are\ n.n.}\\
+	0 & \mathrm{if}\ n'=n
+	\end{cases}$$
+	\begin{center} [MISSING EVEN MORE... SO TIRED]\ldots[MISSSING NOTES FROM MAY 2, 2011] \end{center}
+	\textit{May 4, 2011}\\
+	\subsection{Exact Solution to 1-D Transverse Ising Model}
+	\subsubsection{Quick Review} (This section subject to change pending an update) The full Hamiltonian for the 1d system was found and simplified via a Jordan-Wigner transformation:
+	$$\mathcal{H}_{1\mathrm{d}}(\left\{\sigma_i^\mu\right\})\longrightarrow \mathcal{H}_{1\mathrm{d}}(\left\{\hat{c}_i,\hat{c}_i^\dagger\right\})=-J\sum_i\left(\hat{c}_i^\dagger \hat{c}_{i+1}+\hat{c}_i^\dagger \hat{c}_{i+1}^\dagger +hc_i\right)+h\sum_i (2\hat{c}_i^\dagger \hat{c}_i-1)$$
+	where we have the creation and annihilation operators following the rules
+	\begin{align*}
+		\hat{c}_k&=\frac{1}{\sqrt{N}}\sum_i \hat{c}_ie^{-ikx_i}\\
+		\hat{c}_i&=\frac{1}{\sqrt{N}}\sum_k \hat{c}_ke^{ikx_i}\\
+		\left\{\hat{c}_k,\hat{c}_{k'}^\dagger\right\}&=\delta_{kk'}\\
+		\left\{\hat{c}_k,\hat{c}_{k'}\right\}&=0
+	\end{align*}
+	These relations then allow us to rewrite the Hamiltonian as
+	$$\mathcal{H}_{1\mathrm{d}}=\sum_k\left[(2h-J\cos k)\hat{c}_k^\dagger \hat{c}_k -i J\sin k(\hat{c}_k^\dagger\hat{c}_{-k}^\dagger+\hat{c}_k\hat{c}_{-k})\right]$$
+	\subsubsection{Finishing the Derivation}
+	We now rewrite \emph{this} form of the Hamiltonian through the means of a Bogoliubov (Bo-goal-you-bov\ldots\ the more you know!) Transformation:
+	$$\mathcal{H}_{\mathrm{1d}}={\sum_{k>0}}^\prime (\hat{c}_k^\dagger,\hat{c}_{-k})\begin{pmatrix} 2(h-J\cos k) & -2iJ\sin k\\ 2iJ\sin k & -2(h-J\cos k)\end{pmatrix}\begin{pmatrix} \hat{c}_k\\ \hat{c}_{-k}^\dagger \end{pmatrix}$$
+	Denoting the matrix in this form as $\tilde{H}$, we diagonalize this matrix , making use of the Pauli matrices, $\tau^i$:
+	$$\tilde{H}=2(h-J\cos k)\tau^z+2J\sin k\tau^y\equiv \mathbf{h}_{\mathrm{eff}}\cdot\vec{\tau}$$
+	The eigenenergies are then 
+	$$E_k=\pm\norm{\mathbf{h}_{\mathrm{eff}}}=2\left[J^2+h^2-2hJ\cos k\right]^{1/2}$$
+	Interestingly, this energy is invariant under swapping $J$ and $h$. Note, we define the values $E_k$ to be the positive values, while the eigenvalues are understood to be $\pm E_k$. We now introduce new fermions by the transformation 
+	$$\begin{pmatrix} \hat{c}_k\\ \hat{c}_{-k}^\dagger\end{pmatrix}=\tilde{U}\begin{pmatrix}\hat{a}_k\\\hat{a}_{-k}\end{pmatrix}=e^{\frac{i\theta_k}{2}\tau^x}\begin{pmatrix}\hat{a}_k\\\hat{a}_{-k}\end{pmatrix}$$
+	where $\tan\theta_k=\frac{J\sin k}{h-J\cos k}$. Writing the transformation out explicitly, 
+	$$\begin{pmatrix} \hat{c}_k\\\hat{c}_{-k}^\dagger \end{pmatrix}=\begin{pmatrix}\cos\theta/2 & i\sin\theta/2\\ i\sin\theta/2 & \cos\theta/2\end{pmatrix}\begin{pmatrix}\hat{a}_k\\\hat{a}_{-k}\end{pmatrix}$$
+	So that $$\left\{\hat{a}_k,\hat{a}_{k'}^\dagger\right\}=\delta_{kk'}$$
+	Now we may finally diagonalize our Hamiltonian. The diagonalizing unitary operator is incidentally the very same $\tilde{U}$ already used to get the new set of creation and annihilation operators, giving us
+	$$\tilde{U}^\dagger\tilde H\tilde{U}=E_k \tau^z$$
+	This then gives
+	$$\mathcal{H}_{\mathrm{1d}}={\sum_{k>0}}'(\hat{a}_k^\dagger \hat{a}_{-k})\begin{pmatrix}E_k & 0\\0&-E_k\end{pmatrix}\begin{pmatrix}\hat{a}_k\\\hat{a}_k^\dagger\end{pmatrix} =\sum_k E_k\hat{a}_k^\dagger \hat{a}_k$$
+	At least we have a simple and solved Hamiltonian in terms only of the operators $\hat{a}_k$ and $\hat{a}_k^\dagger$. Now note that
+	$$(\hat{a}_k^\dagger \hat{a}_k)^2=(\hat{a}_k^\dagger\hat{a}_k)\Rightarrow \hat{a}_k^\dagger\hat{a}_k\ \textrm{has eigenvalues }0\ \mathrm{or}\ 1$$
+	The ground state is thus a vacuum of $\hat{a}$ particles, that is, 
+	$$\hat{a}_k\ket{G}=0\ \forall k\qquad \qquad \ket{k}=\hat{a}_k^\dagger\ket{G}\ \textrm{ for excited state with energy }E_k$$
+	More formally, the ground state can be expressed as
+	$$\ket{G}={\prod_k}'\hat{a}_k\hat{a}_{-k}\ket{\textrm{vacuum of }c\textrm{'s}}$$
+	and then acting with any annihilation operator necessarily gives
+	$$\hat{a}_{k'}\ket{G}=\hat{a}_{k'}\hat{a}_{k'}\prod_{k\neq k'}\hat{a}_k\ket{\mathrm{vac}}=0$$
+	We then write the ground state as
+	$$\ket{G}={\prod_k}'\left(\cos\frac{\theta_k}{2}\hat{c}_k-i\sin\frac{\theta_k}{2}\hat{c}_{-k}^\dagger\right)\left(\cos\frac{\theta_k}{2}\hat{c}_{-k}+i\sin\frac{\theta_k}{2}\hat{c}_k^\dagger\right)\ket{\mathrm{vac}}$$
+	$$\ket{G}=(\mathrm{const})\prod_k \left(\cos\frac{\theta_k}{2}-i\sin\frac{\theta_k}{2}\hat{c}_{-k}^\dagger\hat{c}_k^\dagger\right)\ket{\mathrm{vac}}$$
+	Recall that 
+	$$\tan\theta_k=\frac{J\sin k}{h-J\cos k}$$
+	\subsubsection{Limiting Cases} Nos suppose that $h\gg J$. Then $\theta\approx 0$ and
+	$$\ket{G}=(\mathrm{const})\ket{\textrm{vacuum of }\hat{c}\ \mathrm{particles}}$$
+	and
+	$$\left<\hat{\sigma}_i^y\right>=1-\langle z\hat{c}_i^\dagger\hat{c}_i\rangle$$
+	$$\langle \hat{\sigma}_i^x\rangle=1$$
+	as expected from our earlier work. The ground state is then
+	$$\ket{G}\approx (\mathrm{const})\prod_{\mathrm{small}\ k}(1-i\frac{k}{2}\hat{c}_k^\dagger\hat{c}_{-k}^\dagger)\ket{\mathrm{vac}}$$
+	which, interestingly, has the form of a BCS (superconducting) ground state.
 	
 \end{document}
